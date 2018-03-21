@@ -12,11 +12,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class parser1 {
+public class parser3 {
 	public static void main(String[] args) throws IOException {
 	
 		List<String> results = new ArrayList<String>();
-	    	File[] file = new File("/Users/supreetsingh/Desktop/IR_Assignement2/Assignment_Two/ft").listFiles();
+	    	File[] file = new File("/Users/supreetsingh/Desktop/IR_Assignement2/Assignment_Two/fr94").listFiles();
 	    	System.out.println(file);
 	    	ArrayList<String> files1 = new ArrayList<String>();
 	    	for (File files : file) {
@@ -55,7 +55,7 @@ public class parser1 {
     	    doc.select("graphic").remove();
     	    doc.select("docid").remove();
     	    doc.select("dateline").remove();
-    	    doc.select("date").remove();
+    	    //doc.select("date").remove();
     	    doc.select("correction-date").remove();
 
     	  
@@ -65,22 +65,30 @@ public class parser1 {
     	    for (Element e: docs) {
 
     	      	String DocNo = e.getElementsByTag("Docno").text();
-	    		String TextContent = e.getElementsByTag("Text").text();
-	    		String Headline = e.getElementsByTag("Headline").text();
-	    		String ByLine = e.getElementsByTag("Byline").text();
-	    		String Profile =e.getElementsByTag("Profile").text();
-	    		
+	    		String Parent = e.getElementsByTag("Parent").text();
+	    		String USDept = e.getElementsByTag("USDept").text();
+	    		String USBureau = e.getElementsByTag("USBureau").text();
+	    		String Agency =e.getElementsByTag("Agency").text();
+	    		String Date =e.getElementsByTag("Date").text();
+	    		String Further =e.getElementsByTag("Further").text();
+	    		String Supplem =e.getElementsByTag("Supplem").text();
+	    		String Summary =e.getElementsByTag("Summary").text();
 
 	    			System.out.println(DocNo + ":   ");
-				System.out.println("Headline" + ":   " + Headline);
-				System.out.println("TextContent" + ":   " + TextContent);
-				System.out.println("ByLine" + ":   " + ByLine);
-				System.out.println("Profile" + ":   " + Profile);
+				System.out.println("Parent" + ":   " + Parent);
+				System.out.println("USDept" + ":   " + USDept);
+				System.out.println("USBureau" + ":   " + USBureau);
+				System.out.println("Date" + ":   " + Date);
+				System.out.println("Agency" + ":   " + Agency);
+				System.out.println("Summary" + ":   " + Summary);
+				System.out.println("Further info" + ":   " + Further);
+				System.out.println("Supplem" + ":   " + Supplem);
+				
 			
     			
-    				 File result = new File("/Users/supreetsingh/Desktop/IR_Assignement2/ft_docs/"+DocNo);
+    				 File result = new File("/Users/supreetsingh/Desktop/IR_Assignement2/fr94_docs/"+DocNo);
     	             PrintWriter writer = new PrintWriter(result, "UTF-8");
-    	             writer.println(DocNo + '\n'+ Headline + '\n'+ TextContent+'\n'+ ByLine + '\n'+ Profile);
+    	             writer.println(DocNo + '\n'+ Parent + '\n'+ USDept+'\n'+ USBureau + '\n'+ Agency + '\n' +Date+'\n'+ Summary+ '\n'+Further+'\n'+Supplem);
     	             writer.close();
 	    }
 	    	
